@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+</head>
+<body>
+<div style="width:500px;height:500px;border:1px solid gray" id="container"></div>
+<form action="{{url_for('digits.test.test.create')}}" method="post">
+	<input type="checkbox" name="building" value="building" onclick="setPoint()"/>建筑
+	<input type="hidden" name="zoom" value="" id="zoom"/>
+	<input type="hidden" name="lng" value="" id="lng"/>
+	<input typr="hidden" name="lat" value="" id="lat"/>
+	<input type="checkbox" name="grass" value="grass" onclick="setPoint()"/>草地<br>
+	<!--<button type="button" onclick="bt()" ></button>-->
+	<input type="submit" value="检测">
+</form>
+<script type="text/javascript">
+var map = new BMap.Map("container", {mapType:BMAP_SATELLITE_MAP});
+var point = new BMap.Point(119.305724, 26.092186);
+var projection = new BMap.MercatorProjection();
+map.centerAndZoom(point, 18);
+map.addControl(new BMap.NavigationControl());
+map.addControl(new BMap.MapTypeControl());
+var marker = new BMap.Marker(point);
+map.addOverlay(marker);
+var point;
+map.addEventListener('click', function(e){
+	point = projection.lngLatToPoint(new BMap.Point(map.getCenter().lng, map.getCenter().lat));
+	alert(e.point.lng + " " + e.point.lat + " " + point.x + " " + point.y);
+})
+function setPoint(){
+	var lng = document.getElementById("lng");
+	var lat = document.getElementById("lat");
+	if(lng.value == ""){
+		lng.value = point.x;
+		lat.value = point.y;
+	}
+}
+function bt(){
+	alert(map.getCenter().lng + " " + map.getCenter().lat+ " " + map.getZoom());	
+}
+var zoom = document.getElementById("zoom");
+zoom.value = map.getZoom();
+//alert(zoom.value);
+</script>
+</body>
+</html>
