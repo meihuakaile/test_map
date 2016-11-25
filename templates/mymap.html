@@ -2,17 +2,17 @@
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-<title>test</title>
+<title>百度地图默认显示卫星地图示例-Mzwu.COM</title>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
 </head>
 <body>
 <div style="width:500px;height:500px;border:1px solid gray" id="container"></div>
-<form action="{{url_for('digits.test.test.create')}}" method="post">
-	<input type="checkbox" name="building" value="building" onclick="setPoint()"/>建筑
+<form action="{{url_for('myview.back')}}" method="post">
+	<input type="checkbox" name="建筑" value="building" onclick="setPoint()"/>建筑
 	<input type="hidden" name="zoom" value="" id="zoom"/>
 	<input type="hidden" name="lng" value="" id="lng"/>
-	<input typr="hidden" name="lat" value="" id="lat"/>
-	<input type="checkbox" name="grass" value="grass" onclick="setPoint()"/>草地<br>
+	<input type="hidden" name="lat" value="" id="lat"/>
+	<input type="checkbox" name="草地" value="grass" onclick="setPoint()"/>草地<br>
 	<!--<button type="button" onclick="bt()" ></button>-->
 	<input type="submit" value="检测">
 </form>

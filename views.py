@@ -714,7 +714,10 @@ def extension_static(extension_type, extension_id, filename):
 def test():
     from digits.test import forms
     form = forms.testForm()
+	#if str(form.building.data) != "":
+    print "two"   
     if form.validate_on_submit():
+	    print "one"
         return "sucess"+ " " + str(form.building.data) + str(form.zoom.data)+ str(form.grass.data) + str(form.lng.data) + str(form.lat.data)
     return flask.render_template('/test/mymap.html', form=form)
 # SocketIO functions
